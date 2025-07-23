@@ -16,10 +16,13 @@
 **Prática**: Criar classe `User` com validações
 **Exercício**: 
 ```typescript
-// Implementar classe com constructor overloading
 class DatabaseConnection {
   constructor(url: string);
   constructor(host: string, port: number, database: string);
+  // A implementação real lida com ambas as assinaturas
+  constructor(arg1: string, arg2?: number, arg3?: string) {
+    // ... lógica para diferenciar os construtores
+  }
 }
 ```
 **Documentação**: [Classes - TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/2/classes.html)
@@ -30,8 +33,17 @@ class DatabaseConnection {
 **Exercício**: Resolver problemas de `this` context em callbacks
 ```typescript
 class QueryBuilder {
-  where(condition: string): this { /* */ }
-  orderBy(field: string): this { /* */ }
+  private query: string = '';
+
+  where(condition: string): this {
+    this.query += ` WHERE ${condition}`;
+    return this;
+  }
+
+  orderBy(field: string): this {
+    this.query += ` ORDER BY ${field}`;
+    return this;
+  }
 }
 ```
 **Documentação**: [This Types](https://www.typescriptlang.org/docs/handbook/2/classes.html#this-types)
@@ -42,7 +54,11 @@ class QueryBuilder {
 **Exercício**: Implementar função de parsing de JSON type-safe
 ```typescript
 function safeJsonParse<T>(json: string): T | Error {
-  // Implementar sem usar any
+  try {
+    return JSON.parse(json) as T;
+  } catch (e) {
+    return new Error('Failed to parse JSON');
+  }
 }
 ```
 **Documentação**: [Unknown Type](https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown)
@@ -52,9 +68,12 @@ function safeJsonParse<T>(json: string): T | Error {
 **Prática**: Criar type guards para validação de dados da API
 **Exercício**: Implementar type guards para discriminated unions
 ```typescript
+type SuccessResponse = { status: 'success', data: any };
+type ErrorResponse = { status: 'error', message: string };
 type ApiResponse = SuccessResponse | ErrorResponse;
+
 function isSuccessResponse(response: ApiResponse): response is SuccessResponse {
-  // Implementar
+  return response.status === 'success';
 }
 ```
 **Documentação**: [Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
@@ -64,7 +83,7 @@ function isSuccessResponse(response: ApiResponse): response is SuccessResponse {
 **Prática**: Criar sistema de configuração type-safe
 **Exercício**: Implementar mapeamento como seu exemplo:
 ```typescript
-const tooltipContent: Record<string, DictionaryPath> = {
+const tooltipContent: Record<string, string> = {
   [columnType.YIELD]: 'min_fare.table.tooltips.yield',
 };
 ```
@@ -113,8 +132,16 @@ abstract class BaseService<TResponse, TParams> {
 **Exercício**: Criar builder pattern type-safe
 ```typescript
 class FormBuilder<T> {
-  field<K extends keyof T>(name: K): FormBuilder<T> { /* */ }
-  build(): Form<T> { /* */ }
+  private data: Partial<T> = {};
+
+  field<K extends keyof T>(name: K, value: T[K]): FormBuilder<T> {
+    this.data[name] = value;
+    return this;
+  }
+
+  build(): T {
+    return this.data as T;
+  }
 }
 ```
 **Documentação**: [This Parameters](https://www.typescriptlang.org/docs/handbook/2/functions.html#declaring-this-in-a-function)
@@ -130,8 +157,16 @@ class FormBuilder<T> {
 **Prática**: Refatorar APIs externas sem tipagem
 **Exercício**: Criar wrapper type-safe para biblioteca sem tipos
 ```typescript
-// Converter isto para type-safe:
-declare const untypedLibrary: any;
+// Exemplo de como um wrapper seguro seria
+interface SafeLibrary {
+  featureOne(p: string): void;
+  featureTwo(p: number): boolean;
+}
+
+function wrapLibrary(untyped: any): SafeLibrary {
+  // ... implementação com validações
+  return untyped as SafeLibrary;
+}
 ```
 **Documentação**: [Never Type](https://www.typescriptlang.org/docs/handbook/2/functions.html#never)
 
@@ -164,6 +199,9 @@ type DeepPartial<T> = T extends object ? {
 ```typescript
 function getData(id: string): Promise<User>;
 function getData(filter: Filter): Promise<User[]>;
+function getData(arg: string | Filter): Promise<User | User[]> {
+  // ... implementação
+}
 ```
 **Documentação**: [Function Overloads](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads)
 
@@ -184,7 +222,7 @@ type FormConfig<T> = {
 **Exercício**: Implementar sistema completo de services com DI
 ```typescript
 abstract class GetTableDataService<TResponse, TParams extends Record<string, any>> {
-  // Sua implementação + melhorias
+  // ... implementação
 }
 ```
 **Documentação**: [Interfaces](https://www.typescriptlang.org/docs/handbook/2/objects.html)
@@ -194,7 +232,7 @@ abstract class GetTableDataService<TResponse, TParams extends Record<string, any
 **Prática**: Implementar sistema de error handling sem exceptions
 **Exercício**: Criar `Result<T, E>` pattern
 ```typescript
-type Result<T, E = Error> = Success<T> | Failure<E>;
+type Result<T, E = Error> = { success: true, value: T } | { success: false, error: E };
 ```
 **Documentação**: [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)
 
@@ -203,8 +241,8 @@ type Result<T, E = Error> = Success<T> | Failure<E>;
 **Prática**: Criar sistema de internacionalização type-safe
 **Exercício**: Implementar dictionary pattern como seu exemplo
 ```typescript
-const tooltipContent: Record<ColumnType, DictionaryPath> = {
-  // Implementar com type safety completo
+const tooltipContent: Record<ColumnType, string> = {
+  [ColumnType.YIELD]: 'min_fare.table.tooltips.yield',
 } as const;
 ```
 **Documentação**: [Const Assertions](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions)
@@ -214,7 +252,7 @@ const tooltipContent: Record<ColumnType, DictionaryPath> = {
 **Prática**: Criar meta-programming utilities
 **Exercício**: Implementar factory pattern type-safe
 ```typescript
-type ServiceFactory<T> = {
+type ServiceFactory<T extends new (...args: any[]) => any> = {
   create(...args: ConstructorParameters<T>): InstanceType<T>
 }
 ```
