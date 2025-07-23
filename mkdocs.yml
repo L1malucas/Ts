@@ -1,0 +1,11 @@
+site_name: Meus Estudos
+theme:
+    name: dracula
+nav:
+  - Início: index.md
+  - TypeScript:
+    - 'Visão Geral': 'Ts/estrutura-plano.md'
+    - 'Semana 1': 'Ts/Semana1.md'
+    - 'Semana 2': 'Ts/Semana2.md'
+    - 'Semana 3': 'Ts/Semana3.md'
+    - 'Semana 4': 'Ts/Semana4.md'
