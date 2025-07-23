@@ -76,6 +76,66 @@
                 <a href="../.."
                     class="
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#requisitos-collapse" aria-expanded="false">
+                    Requisitos
+                </a>
+                <div class="collapse" id="requisitos-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../../Requisitos/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Visão Geral
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#lógica-collapse" aria-expanded="false">
+                    Lógica
+                </a>
+                <div class="collapse" id="lógica-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../../Logica/apostila/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Lógica de Programação
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#web-collapse" aria-expanded="false">
+                    Web
+                </a>
+                <div class="collapse" id="web-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../../Web/Armazenamento/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Armazenamento Web
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#typescript-collapse" aria-expanded="false">
                     TypeScript
                 </a>
@@ -119,6 +179,42 @@
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             Semana 4
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#mongo-collapse" aria-expanded="false">
+                    Mongo
+                </a>
+                <div class="collapse" id="mongo-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../../MongoDB/apostila/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Apostila
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../../MongoDB/respostas/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Respostas
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../../MongoDB/tarefas/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Tarefas
         </a>
     </li>
                     </ul>
@@ -194,10 +290,13 @@
 <p><strong>Teoria</strong>: Constructor, properties, methods, access modifiers
 <strong>Prática</strong>: Criar classe <code>User</code> com validações
 <strong>Exercício</strong>: </p>
-<pre><code class="language-typescript">// Implementar classe com constructor overloading
-class DatabaseConnection {
+<pre><code class="language-typescript">class DatabaseConnection {
   constructor(url: string);
   constructor(host: string, port: number, database: string);
+  // A implementação real lida com ambas as assinaturas
+  constructor(arg1: string, arg2?: number, arg3?: string) {
+    // ... lógica para diferenciar os construtores
+  }
 }
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/classes.html">Classes - TypeScript Handbook</a></p>
@@ -206,8 +305,17 @@ class DatabaseConnection {
 <strong>Prática</strong>: Implementar método de chaining type-safe
 <strong>Exercício</strong>: Resolver problemas de <code>this</code> context em callbacks</p>
 <pre><code class="language-typescript">class QueryBuilder {
-  where(condition: string): this { /* */ }
-  orderBy(field: string): this { /* */ }
+  private query: string = '';
+
+  where(condition: string): this {
+    this.query += ` WHERE ${condition}`;
+    return this;
+  }
+
+  orderBy(field: string): this {
+    this.query += ` ORDER BY ${field}`;
+    return this;
+  }
 }
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/classes.html#this-types">This Types</a></p>
@@ -216,7 +324,11 @@ class DatabaseConnection {
 <strong>Prática</strong>: Refatorar código com <code>any</code> para tipagens seguras
 <strong>Exercício</strong>: Implementar função de parsing de JSON type-safe</p>
 <pre><code class="language-typescript">function safeJsonParse&lt;T&gt;(json: string): T | Error {
-  // Implementar sem usar any
+  try {
+    return JSON.parse(json) as T;
+  } catch (e) {
+    return new Error('Failed to parse JSON');
+  }
 }
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown">Unknown Type</a></p>
@@ -224,9 +336,12 @@ class DatabaseConnection {
 <p><strong>Teoria</strong>: <code>typeof</code>, <code>instanceof</code>, custom type guards
 <strong>Prática</strong>: Criar type guards para validação de dados da API
 <strong>Exercício</strong>: Implementar type guards para discriminated unions</p>
-<pre><code class="language-typescript">type ApiResponse = SuccessResponse | ErrorResponse;
+<pre><code class="language-typescript">type SuccessResponse = { status: 'success', data: any };
+type ErrorResponse = { status: 'error', message: string };
+type ApiResponse = SuccessResponse | ErrorResponse;
+
 function isSuccessResponse(response: ApiResponse): response is SuccessResponse {
-  // Implementar
+  return response.status === 'success';
 }
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html">Narrowing</a></p>
@@ -234,7 +349,7 @@ function isSuccessResponse(response: ApiResponse): response is SuccessResponse {
 <p><strong>Teoria</strong>: <code>Record&lt;K,V&gt;</code>, <code>Pick</code>, <code>Omit</code>, <code>Partial</code>, <code>Required</code>
 <strong>Prática</strong>: Criar sistema de configuração type-safe
 <strong>Exercício</strong>: Implementar mapeamento como seu exemplo:</p>
-<pre><code class="language-typescript">const tooltipContent: Record&lt;string, DictionaryPath&gt; = {
+<pre><code class="language-typescript">const tooltipContent: Record&lt;string, string&gt; = {
   [columnType.YIELD]: 'min_fare.table.tooltips.yield',
 };
 </code></pre>
@@ -273,8 +388,16 @@ function isSuccessResponse(response: ApiResponse): response is SuccessResponse {
 <strong>Prática</strong>: Implementar fluent API com tipagem correta do <code>this</code>
 <strong>Exercício</strong>: Criar builder pattern type-safe</p>
 <pre><code class="language-typescript">class FormBuilder&lt;T&gt; {
-  field&lt;K extends keyof T&gt;(name: K): FormBuilder&lt;T&gt; { /* */ }
-  build(): Form&lt;T&gt; { /* */ }
+  private data: Partial&lt;T&gt; = {};
+
+  field&lt;K extends keyof T&gt;(name: K, value: T[K]): FormBuilder&lt;T&gt; {
+    this.data[name] = value;
+    return this;
+  }
+
+  build(): T {
+    return this.data as T;
+  }
 }
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/functions.html#declaring-this-in-a-function">This Parameters</a></p>
@@ -287,8 +410,16 @@ function isSuccessResponse(response: ApiResponse): response is SuccessResponse {
 <p><strong>Teoria</strong>: <code>never</code> type, exhaustive checking, branded types
 <strong>Prática</strong>: Refatorar APIs externas sem tipagem
 <strong>Exercício</strong>: Criar wrapper type-safe para biblioteca sem tipos</p>
-<pre><code class="language-typescript">// Converter isto para type-safe:
-declare const untypedLibrary: any;
+<pre><code class="language-typescript">// Exemplo de como um wrapper seguro seria
+interface SafeLibrary {
+  featureOne(p: string): void;
+  featureTwo(p: number): boolean;
+}
+
+function wrapLibrary(untyped: any): SafeLibrary {
+  // ... implementação com validações
+  return untyped as SafeLibrary;
+}
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/functions.html#never">Never Type</a></p>
 <h3 id="dia-13-conditional-types"><strong>Dia 13: Conditional Types</strong></h3>
@@ -314,6 +445,9 @@ declare const untypedLibrary: any;
 <strong>Exercício</strong>: Implementar função que retorna tipos diferentes baseado no input</p>
 <pre><code class="language-typescript">function getData(id: string): Promise&lt;User&gt;;
 function getData(filter: Filter): Promise&lt;User[]&gt;;
+function getData(arg: string | Filter): Promise&lt;User | User[]&gt; {
+  // ... implementação
+}
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads">Function Overloads</a></p>
 <h3 id="dia-16-mapped-types-avancados"><strong>Dia 16: Mapped Types Avançados</strong></h3>
@@ -330,7 +464,7 @@ function getData(filter: Filter): Promise&lt;User[]&gt;;
 <strong>Prática</strong>: Recriar e melhorar seu <code>GetTableDataService</code>
 <strong>Exercício</strong>: Implementar sistema completo de services com DI</p>
 <pre><code class="language-typescript">abstract class GetTableDataService&lt;TResponse, TParams extends Record&lt;string, any&gt;&gt; {
-  // Sua implementação + melhorias
+  // ... implementação
 }
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/objects.html">Interfaces</a></p>
@@ -338,15 +472,15 @@ function getData(filter: Filter): Promise&lt;User[]&gt;;
 <p><strong>Teoria</strong>: Result pattern, discriminated unions para errors
 <strong>Prática</strong>: Implementar sistema de error handling sem exceptions
 <strong>Exercício</strong>: Criar <code>Result&lt;T, E&gt;</code> pattern</p>
-<pre><code class="language-typescript">type Result&lt;T, E = Error&gt; = Success&lt;T&gt; | Failure&lt;E&gt;;
+<pre><code class="language-typescript">type Result&lt;T, E = Error&gt; = { success: true, value: T } | { success: false, error: E };
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types">Union Types</a></p>
 <h3 id="dia-19-advanced-record-patterns"><strong>Dia 19: Advanced Record Patterns</strong></h3>
 <p><strong>Teoria</strong>: <code>Record</code> com template literals, const assertions
 <strong>Prática</strong>: Criar sistema de internacionalização type-safe
 <strong>Exercício</strong>: Implementar dictionary pattern como seu exemplo</p>
-<pre><code class="language-typescript">const tooltipContent: Record&lt;ColumnType, DictionaryPath&gt; = {
-  // Implementar com type safety completo
+<pre><code class="language-typescript">const tooltipContent: Record&lt;ColumnType, string&gt; = {
+  [ColumnType.YIELD]: 'min_fare.table.tooltips.yield',
 } as const;
 </code></pre>
 <p><strong>Documentação</strong>: <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions">Const Assertions</a></p>
@@ -354,7 +488,7 @@ function getData(filter: Filter): Promise&lt;User[]&gt;;
 <p><strong>Teoria</strong>: <code>ReturnType</code>, <code>Parameters</code>, <code>ConstructorParameters</code>, <code>InstanceType</code>
 <strong>Prática</strong>: Criar meta-programming utilities
 <strong>Exercício</strong>: Implementar factory pattern type-safe</p>
-<pre><code class="language-typescript">type ServiceFactory&lt;T&gt; = {
+<pre><code class="language-typescript">type ServiceFactory&lt;T extends new (...args: any[]) =&gt; any&gt; = {
   create(...args: ConstructorParameters&lt;T&gt;): InstanceType&lt;T&gt;
 }
 </code></pre>
