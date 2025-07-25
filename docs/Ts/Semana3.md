@@ -67,6 +67,8 @@ Crie uma função `doubleMe` que tem duas sobrecargas: se receber um `number`, r
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 function doubleMe(x: number): number;
 function doubleMe(x: string): string;
@@ -93,6 +95,8 @@ Crie uma função `createElement`. Se ela receber um único argumento (`'div'`),
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Tipos de retorno simulados, já que não estamos no DOM
@@ -128,6 +132,8 @@ Simule a lógica de busca e os tipos `User` e `Filter`.
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface User { id: string; name: string; }
@@ -242,6 +248,8 @@ Crie um Mapped Type `ObjectWithSetters<T>` que pega um objeto `T` e cria um novo
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 type ObjectWithSetters<T> = {
   [P in keyof T as `set${Capitalize<string & P>}`]: (value: T[P]) => void;
@@ -269,6 +277,8 @@ Crie um Mapped Type `FilterByType<T, U>` que pega um tipo `T` e remove todas as 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 type FilterByType<T, U> = {
   [P in keyof T as T[P] extends U ? P : never]: T[P];
@@ -294,6 +304,8 @@ Implemente o `FormConfig<T>` do plano de estudos. Ele deve pegar um tipo `T` e g
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Tipo auxiliar para a configuração do campo
@@ -406,6 +418,8 @@ Defina uma interface `INotifier` com um método `notify(message: string): void`.
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 interface INotifier {
   notify(message: string): void;
@@ -440,6 +454,8 @@ Crie uma interface `IProductRepository` com um método `getProductPrice(productI
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface IProductRepository {
@@ -486,6 +502,8 @@ Recrie e melhore seu `GetTableDataService`. Defina uma classe abstrata `GetTable
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Contratos e Tipos
@@ -601,6 +619,8 @@ Crie uma função `parseNumber(s: string): Result<number, string>` que tenta con
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 type Success<T> = { success: true; value: T };
 type Failure<E> = { success: false; error: E };
@@ -628,6 +648,8 @@ Crie uma classe `Result` com métodos estáticos `ok<T>(value: T)` e `fail<E>(er
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Tipos auxiliares
@@ -666,6 +688,8 @@ Crie uma função `fetchUserProfile(userId: string): Promise<Result<User, Error>
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Reutilizando os tipos do Nível 1
@@ -764,6 +788,8 @@ Crie um objeto `HttpStatusCodes` que mapeia nomes de status (`OK`, `NOT_FOUND`, 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 const HttpStatusCodes = {
   OK: 200,
@@ -785,6 +811,8 @@ Crie um tipo `UserAction` (`'create'` | `'edit'` | `'delete'`). Crie um objeto `
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 type UserAction = 'create' | 'edit' | 'delete';
@@ -811,6 +839,8 @@ Implemente o `tooltipContent` do plano de estudos. Crie um `enum ColumnType`. Cr
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 enum ColumnType {
@@ -893,6 +923,8 @@ Crie uma função `log(message: string, level: 'info' | 'warn' | 'error')`. Use 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 function log(message: string, level: 'info' | 'warn' | 'error'): void {
   console.log(`[${level.toUpperCase()}] ${message}`);
@@ -911,6 +943,8 @@ Crie uma função `fetchData(): Promise<{ data: string[] }>` que simula uma cham
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 async function fetchData(): Promise<{ data: string[] }> {
@@ -938,6 +972,8 @@ Implemente o `ServiceFactory<T>` do plano de estudos. Deve ser um tipo que repre
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // O tipo genérico da fábrica
@@ -994,6 +1030,8 @@ Crie uma classe `HttpClient` com um único método `get<T>(url: string): Promise
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 class HttpClient {
   async get<T>(url: string): Promise<T> {
@@ -1022,6 +1060,8 @@ Melhore o `HttpClient` do Nível 1 para usar o `Result` pattern. O método `get<
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Reutilizando o tipo Result
@@ -1073,6 +1113,8 @@ Implemente a lógica na assinatura de implementação para lidar com ambos os ca
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Reutilizando o tipo Result

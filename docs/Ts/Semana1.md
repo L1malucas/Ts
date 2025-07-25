@@ -105,6 +105,8 @@ Crie uma classe `Rectangle` com propriedades `width` e `height` (ambas `public` 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 class Rectangle {
   public width: number;
@@ -126,11 +128,15 @@ console.log(rect.getArea()); // 200
 ```
 </details>
 
+---
+
 **Nível 2: Intermediário**
 Crie uma classe `Product` com propriedades `name` (string) e `price` (number), ambas `private`. Use *parameter properties*. Adicione um método público `getPrice()` para ler o preço e um método `setPrice(newPrice: number)` que só permite a alteração se o `newPrice` for maior que zero.
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class Product {
@@ -162,6 +168,8 @@ book.setPrice(-10); // "Preço inválido..."
 ```
 </details>
 
+---
+
 **Nível 3: Avançado**
 Implemente a classe `DatabaseConnection` que simula o padrão de *constructor overloading*. A classe deve poder ser instanciada de duas formas:
 1.  `new DatabaseConnection(url: string)`
@@ -170,6 +178,8 @@ O construtor deve ter uma única implementação que verifica os argumentos rece
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class DatabaseConnection {
@@ -297,6 +307,8 @@ Crie uma classe `Logger` com uma propriedade `message`. Crie um método `printMe
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 class Logger {
   constructor(private message: string = "Operação concluída!") {}
@@ -318,11 +330,15 @@ logger.schedulePrint(); // Após 1s: "Operação concluída!"
 ```
 </details>
 
+---
+
 **Nível 2: Intermediário**
 Crie uma classe `Calculator` com uma propriedade `value` (number, private, inicia em 0). Crie os métodos `add(num: number)`, `subtract(num: number)` e `multiply(num: number)`. Cada um desses métodos deve modificar o `value` e retornar `this` para permitir o encadeamento de chamadas.
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class Calculator {
@@ -359,11 +375,15 @@ console.log(result); // 24
 ```
 </details>
 
+---
+
 **Nível 3: Avançado**
 Crie uma classe `DOMManager`. Ela deve ter um método `createElement(tag: string, text: string)` que cria um elemento (simulado por um objeto `{tag, text}`) e o armazena em um array `private elements`. Crie um método `render(containerId: string)` que deveria (em um cenário real) adicionar os elementos a um contêiner do DOM. O método `render` deve ser chamado por um objeto externo, simulando um event listener, então você precisa garantir que o `this` dentro de `render` ainda se refira à instância de `DOMManager`.
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface Element {
@@ -473,6 +493,8 @@ Crie uma função `logString(value: unknown)` que verifica se o valor recebido �
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 function logString(value: unknown): void {
   if (typeof value === 'string') {
@@ -495,6 +517,8 @@ Crie uma função `getDouble(value: unknown): number | null` que verifica se o v
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 function getDouble(value: unknown): number | null {
   if (typeof value === 'number') {
@@ -515,6 +539,8 @@ Crie uma função `safeJsonParse(json: string): unknown | Error`. Esta função 
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 function safeJsonParse(json: string): unknown | Error {
@@ -629,6 +655,8 @@ Crie uma função `formatInput(input: string | string[])`. Se o `input` for uma 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 function formatInput(input: string | string[]): string {
   if (Array.isArray(input)) {
@@ -650,6 +678,8 @@ Defina duas interfaces: `Fish` com um método `swim()` e `Bird` com um método `
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface Fish {
@@ -692,6 +722,8 @@ Implemente o padrão *Discriminated Union*. Crie duas interfaces, `SuccessRespon
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface SuccessResponse {
@@ -798,6 +830,8 @@ Dada a interface `Book { id: number; title: string; author: string; pages: numbe
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 interface Book {
   id: number;
@@ -821,6 +855,8 @@ Crie uma interface `AppSettings` com todas as propriedades opcionais: `theme: st
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface AppSettings {
@@ -853,6 +889,8 @@ Crie um `enum` chamado `UserRole` com os valores `ADMIN`, `EDITOR`, e `VIEWER`. 
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 enum UserRole {
@@ -947,6 +985,8 @@ Crie um tipo `Size` (`'small' | 'medium' | 'large'`) e um tipo `Color` (`'red' |
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 type Size = 'small' | 'medium' | 'large';
 type Color = 'red' | 'blue' | 'green';
@@ -965,6 +1005,8 @@ Crie um tipo `IconName` que represente nomes de ícones no formato `icon-[nome]`
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 type IconName = `icon-${'user' | 'home' | 'settings'}`;
@@ -987,6 +1029,8 @@ Onde `[recurso]` pode ser `users`, `posts`, ou `products`, e `[id]` pode ser `st
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 type Resource = 'users' | 'posts' | 'products';
@@ -1032,6 +1076,8 @@ Crie uma classe `StringStore` **não genérica**. Ela deve ter um array privado 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 class StringStore {
   private data: string[] = [];
@@ -1058,6 +1104,8 @@ Crie uma classe `KeyValueStore<V>` que seja genérica para o **valor** (`V`), ma
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class KeyValueStore<V> {
@@ -1095,6 +1143,8 @@ Implemente a classe `BaseRepository<T>`. Esta classe deve ser genérica e funcio
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // A constraint que todas as entidades devem seguir

@@ -85,6 +85,8 @@ Crie uma classe base `Vehicle` com uma propriedade `brand` (marca) e um método 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 class Vehicle {
   constructor(public brand: string) {}
@@ -116,6 +118,8 @@ Crie uma classe abstrata `LoggerBase` com um método abstrato `log(message: stri
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 abstract class LoggerBase {
@@ -158,6 +162,8 @@ Recrie a estrutura do seu `GetTableDataService` usando uma classe abstrata. Crie
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Definição dos tipos para o serviço concreto
@@ -286,6 +292,8 @@ Crie uma classe genérica `DataStore<T>` que armazena um array de itens do tipo 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 class DataStore<T> {
   private data: T[] = [];
@@ -318,6 +326,8 @@ Crie uma classe genérica `Cache<T>` que armazena um valor do tipo `T` e uma dat
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class Cache<T> {
@@ -364,6 +374,8 @@ Crie uma classe `DataService<T extends { id: K }, K extends string | number>`. E
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // A constraint genérica
@@ -479,6 +491,8 @@ Crie uma interface `User` com `name: string`. Crie uma função `printUserName` 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 interface User {
   name: string;
@@ -505,6 +519,8 @@ Crie uma classe `Configuration<T>` que armazena um objeto de configuração. Cri
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class Configuration<T> {
@@ -548,6 +564,8 @@ Implemente a classe `FormBuilder<T>` do plano de estudos. Ela deve ter um métod
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class FormBuilder<T extends object> {
@@ -675,6 +693,8 @@ Crie um decorator de método chamado `@deprecated`. Quando um método decorado c
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 function deprecated(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
@@ -703,6 +723,8 @@ Crie um decorator de propriedade `@min(minValue: number)`. Este decorator deve g
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 function min(minValue: number) {
@@ -758,6 +780,8 @@ Crie um decorator de método `@cache`. Ele deve armazenar o resultado da primeir
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 function cache(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
@@ -869,6 +893,8 @@ Crie uma função `fail(message: string): never` que sempre lança um erro com a
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 function fail(message: string): never {
   throw new Error(message);
@@ -896,6 +922,8 @@ Crie um branded type `Email` a partir de `string`. Crie uma função `sendEmail(
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 type Brand<K, T> = K & { __brand: T };
@@ -934,6 +962,8 @@ Crie um wrapper type-safe para uma biblioteca externa falsa. A biblioteca tem um
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // A biblioteca externa perigosa
@@ -1041,6 +1071,8 @@ Crie um tipo utilitário `ElementTypeOf<T>` que obtém o tipo dos elementos de u
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 type ElementTypeOf<T> = T extends (infer E)[] ? E : never;
 
@@ -1058,6 +1090,8 @@ Implemente seu próprio `NonNullable<T>`. Este tipo utilitário deve remover `nu
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 type MyNonNullable<T> = T extends null | undefined ? never : T;
 
@@ -1073,6 +1107,8 @@ Implemente o tipo `DeepPartial<T>` do plano de estudos. Ele deve tornar todas as
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 type DeepPartial<T> = T extends object ? {
@@ -1132,6 +1168,8 @@ Crie uma classe abstrata `AuthProvider` com um método abstrato `authenticate(cr
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 abstract class AuthProvider {
   abstract authenticate(credentials: any): Promise<boolean>;
@@ -1165,6 +1203,8 @@ Melhore o sistema do Nível 1. Torne a classe `AuthProvider` genérica: `AuthPro
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface BaseUser { id: number; name: string; }
@@ -1218,6 +1258,8 @@ Crie um decorator de método `@permission(requiredRole: Role)`. Crie um `enum Ro
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 enum Role { USER, ADMIN }

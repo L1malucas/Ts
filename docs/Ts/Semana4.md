@@ -71,6 +71,8 @@ Defina um tipo para um formulário de login, `LoginFormValues`, que contém `ema
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 interface LoginFormValues {
   email: string;
@@ -95,6 +97,8 @@ Crie um tipo `ProfileFormValues` com `name` (string) e `bio` (string, opcional).
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 import { Control, FieldErrors } from 'react-hook-form';
@@ -123,6 +127,8 @@ Usando `Module Augmentation`, estenda a interface `DefaultTheme` de uma bibliote
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Em um arquivo, ex: styled.d.ts
@@ -221,6 +227,8 @@ Crie os `action creators` para as ações `IncrementAction` e `AddAction` do exe
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 // Tipos do exemplo anterior...
 const INCREMENT = 'counter/increment';
@@ -251,6 +259,8 @@ Defina um estado para uma lista de tarefas (`todos`). Crie os tipos de ação e 
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // 1. Tipos de Estado
@@ -303,6 +313,8 @@ Crie um seletor tipado `selectCompletedTodos` que recebe o estado completo da ap
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Reutilizando os tipos do Nível 2
@@ -408,6 +420,8 @@ Crie uma estrutura de pastas `domain/errors`. Dentro, crie dois arquivos: `Unexp
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 // Em domain/errors/UnexpectedError.ts
 export class UnexpectedError extends Error {
@@ -440,6 +454,8 @@ Configure o `path mapping` no seu `tsconfig.json` para criar um alias `@/` que a
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 No `tsconfig.json`:
 ```json
 {
@@ -467,6 +483,8 @@ Crie uma estrutura de módulos para a sua camada de dados, como no seu exemplo. 
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 No `tsconfig.json`:
 ```json
@@ -581,6 +599,8 @@ Crie uma interface `INotifier` com um método `notify(message: string)`. Crie um
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 // Interface original
 interface INotifier {
@@ -609,6 +629,8 @@ Crie uma "mock factory" para um objeto `User`. A factory deve ser uma função `
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface User {
@@ -650,6 +672,8 @@ Usando uma ferramenta como `expect-type` (ou apenas com comentários, se não es
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 import { expectTypeOf } from 'expect-type';
@@ -744,6 +768,8 @@ Refatore um tipo que usa `type` para um objeto para usar `interface`. Explique p
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 // Antes
 type UserType = {
@@ -770,6 +796,8 @@ Dado um tipo `ComplexMappedType` que faz várias operações, quebre-o em tipos 
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 interface Props {
@@ -804,6 +832,8 @@ Crie um tipo `Path<T>` que gera todas as chaves de um objeto aninhado como uma s
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Este tipo é conhecido por ser pesado e pode causar lentidão no compilador
@@ -900,6 +930,8 @@ Implemente uma `SimpleFactory` para criar objetos `Logger`. A factory deve ter u
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 interface ILogger { log(message: string): void; }
 
@@ -935,6 +967,8 @@ Implemente o **Builder Pattern** para criar um objeto `Pizza`. A classe `PizzaBu
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 class Pizza {
@@ -984,6 +1018,8 @@ Crie um sistema de eventos type-safe usando o Observer Pattern. Crie uma classe 
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Mapeia nomes de eventos para os tipos de seus payloads
@@ -1059,6 +1095,8 @@ Vamos construir um pequeno framework para gerenciar o estado de formulários, in
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 ```typescript
 // Tipos utilitários
 type FormErrors<T> = {
@@ -1103,6 +1141,8 @@ console.log(form.getState());
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Tipos do dia anterior...
@@ -1164,6 +1204,8 @@ class FormStore<T extends object> {
 
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 ```typescript
 // Classe e tipos do dia anterior...
