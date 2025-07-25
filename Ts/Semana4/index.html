@@ -354,6 +354,8 @@ Defina um tipo para um formulário de login, <code>LoginFormValues</code>, que c
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">interface LoginFormValues {
   email: string;
@@ -378,6 +380,8 @@ function LoginForm(props: LoginProps) {
 Crie um tipo <code>ProfileFormValues</code> com <code>name</code> (string) e <code>bio</code> (string, opcional). Crie um tipo <code>ProfileFormProps</code> que agrupa as propriedades <code>control</code> e <code>errors</code> do React Hook Form, devidamente tipadas com <code>ProfileFormValues</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">import { Control, FieldErrors } from 'react-hook-form';
@@ -406,6 +410,8 @@ function ProfileFormComponent(props: ProfileFormProps) {
 Usando <code>Module Augmentation</code>, estenda a interface <code>DefaultTheme</code> de uma biblioteca de estilização (ex: <code>styled-components</code>). Adicione uma propriedade <code>customColors</code> que é um objeto com chaves <code>primary</code> e <code>secondary</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Em um arquivo, ex: styled.d.ts
@@ -500,6 +506,8 @@ Crie os <code>action creators</code> para as ações <code>IncrementAction</code
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">// Tipos do exemplo anterior...
 const INCREMENT = 'counter/increment';
@@ -530,6 +538,8 @@ console.log(addAction);
 Defina um estado para uma lista de tarefas (<code>todos</code>). Crie os tipos de ação e o reducer para adicionar uma nova tarefa (<code>ADD_TODO</code>) e marcar uma tarefa como completa (<code>TOGGLE_TODO</code>).</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// 1. Tipos de Estado
@@ -582,6 +592,8 @@ function todosReducer(state = initialTodosState, action: TodoAction): TodosState
 Crie um seletor tipado <code>selectCompletedTodos</code> que recebe o estado completo da aplicação (que contém <code>todosState</code>) e retorna apenas a lista de tarefas completas.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Reutilizando os tipos do Nível 2
@@ -680,6 +692,8 @@ Crie uma estrutura de pastas <code>domain/errors</code>. Dentro, crie dois arqui
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">// Em domain/errors/UnexpectedError.ts
 export class UnexpectedError extends Error {
@@ -712,6 +726,8 @@ Configure o <code>path mapping</code> no seu <code>tsconfig.json</code> para cri
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 No `tsconfig.json`:
 
 <pre><code class="language-json">{
@@ -740,6 +756,8 @@ No código:
 Crie uma estrutura de módulos para a sua camada de dados, como no seu exemplo. Crie <code>data/protocols/http/</code> com um <code>index.ts</code> e um <code>http-client.ts</code>. O <code>http-client.ts</code> deve exportar um <code>HttpStatusCode</code> (enum) e uma interface <code>HttpClient</code>. O <code>index.ts</code> deve exportar tudo de <code>http-client.ts</code>. Configure um alias <code>@data</code> para a pasta <code>data</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 No `tsconfig.json`:
 
@@ -854,6 +872,8 @@ Crie uma interface <code>INotifier</code> com um método <code>notify(message: s
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">// Interface original
 interface INotifier {
@@ -882,6 +902,8 @@ describe('Notifier Test', () =&gt; {
 Crie uma "mock factory" para um objeto <code>User</code>. A factory deve ser uma função <code>createMockUser(overrides: Partial&lt;User&gt;): User</code> que cria um usuário padrão e permite sobrescrever propriedades específicas para cada teste.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface User {
@@ -923,6 +945,8 @@ describe('Mock User Factory', () =&gt; {
 Usando uma ferramenta como <code>expect-type</code> (ou apenas com comentários, se não estiver configurada), escreva um teste de tipo para garantir que uma função <code>add(a: number, b: number)</code> não pode ser chamada com strings.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">import { expectTypeOf } from 'expect-type';
@@ -1012,6 +1036,8 @@ Refatore um tipo que usa <code>type</code> para um objeto para usar <code>interf
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">// Antes
 type UserType = {
@@ -1038,6 +1064,8 @@ interface AdminUser extends UserInterface {
 Dado um tipo <code>ComplexMappedType</code> que faz várias operações, quebre-o em tipos utilitários menores e mais legíveis.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface Props {
@@ -1072,6 +1100,8 @@ type PropCallbacks = CallbacksOnlyAfter&lt;Props&gt;;
 Crie um tipo <code>Path&lt;T&gt;</code> que gera todas as chaves de um objeto aninhado como uma string com pontos (ex: <code>'details.address.city'</code>). Este é um tipo inerentemente recursivo e pesado. Pense em como você poderia otimizá-lo ou quais seriam seus gargalos de performance.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Este tipo é conhecido por ser pesado e pode causar lentidão no compilador
@@ -1164,6 +1194,8 @@ Implemente uma <code>SimpleFactory</code> para criar objetos <code>Logger</code>
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">interface ILogger { log(message: string): void; }
 
@@ -1199,6 +1231,8 @@ fileLogger.log(&quot;Teste arquivo&quot;);
 Implemente o <strong>Builder Pattern</strong> para criar um objeto <code>Pizza</code>. A classe <code>PizzaBuilder</code> deve ter métodos como <code>setCheese(cheese: string)</code>, <code>addTopping(topping: string)</code>, e um método <code>build()</code> que retorna o objeto <code>Pizza</code> final.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class Pizza {
@@ -1248,6 +1282,8 @@ myPizza.describe();
 Crie um sistema de eventos type-safe usando o Observer Pattern. Crie uma classe <code>EventManager</code> que permite se inscrever (<code>on</code>) e emitir (<code>emit</code>) eventos. O sistema deve ser tipado de forma que, ao emitir um evento, o payload seja do tipo correto esperado pelos listeners daquele evento.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Mapeia nomes de eventos para os tipos de seus payloads
@@ -1319,6 +1355,8 @@ events.emit('user:deleted', { userId: 'u-456' });
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">// Tipos utilitários
 type FormErrors&lt;T&gt; = {
@@ -1362,6 +1400,8 @@ console.log(form.getState());
 4.  Adicione um método de validação <code>validate(validationSchema: ValidationSchema&lt;T&gt;): boolean</code>. O <code>validationSchema</code> deve ser um objeto onde cada chave de <code>T</code> tem uma função que recebe o valor do campo e retorna uma <code>string</code> de erro ou <code>undefined</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Tipos do dia anterior...
@@ -1422,6 +1462,8 @@ class FormStore&lt;T extends object&gt; {
 4.  Simule a interação do usuário: mude valores, toque em campos e chame a validação. Imprima o estado (<code>values</code>, <code>errors</code>, <code>touched</code>) no console a cada passo.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Classe e tipos do dia anterior...

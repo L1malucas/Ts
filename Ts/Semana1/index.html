@@ -385,6 +385,8 @@ Crie uma classe <code>Rectangle</code> com propriedades <code>width</code> e <co
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">class Rectangle {
   public width: number;
@@ -407,10 +409,13 @@ console.log(rect.getArea()); // 200
 
 </details>
 
+<hr />
 <p><strong>Nível 2: Intermediário</strong>
 Crie uma classe <code>Product</code> com propriedades <code>name</code> (string) e <code>price</code> (number), ambas <code>private</code>. Use <em>parameter properties</em>. Adicione um método público <code>getPrice()</code> para ler o preço e um método <code>setPrice(newPrice: number)</code> que só permite a alteração se o <code>newPrice</code> for maior que zero.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class Product {
@@ -443,6 +448,7 @@ book.setPrice(-10); // &quot;Preço inválido...&quot;
 
 </details>
 
+<hr />
 <p><strong>Nível 3: Avançado</strong>
 Implemente a classe <code>DatabaseConnection</code> que simula o padrão de <em>constructor overloading</em>. A classe deve poder ser instanciada de duas formas:
 1.  <code>new DatabaseConnection(url: string)</code>
@@ -450,6 +456,8 @@ Implemente a classe <code>DatabaseConnection</code> que simula o padrão de <em>
 O construtor deve ter uma única implementação que verifica os argumentos recebidos e monta a <code>connectionString</code> interna de acordo.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class DatabaseConnection {
@@ -571,6 +579,8 @@ Crie uma classe <code>Logger</code> com uma propriedade <code>message</code>. Cr
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">class Logger {
   constructor(private message: string = &quot;Operação concluída!&quot;) {}
@@ -593,10 +603,13 @@ logger.schedulePrint(); // Após 1s: &quot;Operação concluída!&quot;
 
 </details>
 
+<hr />
 <p><strong>Nível 2: Intermediário</strong>
 Crie uma classe <code>Calculator</code> com uma propriedade <code>value</code> (number, private, inicia em 0). Crie os métodos <code>add(num: number)</code>, <code>subtract(num: number)</code> e <code>multiply(num: number)</code>. Cada um desses métodos deve modificar o <code>value</code> e retornar <code>this</code> para permitir o encadeamento de chamadas.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class Calculator {
@@ -634,10 +647,13 @@ console.log(result); // 24
 
 </details>
 
+<hr />
 <p><strong>Nível 3: Avançado</strong>
 Crie uma classe <code>DOMManager</code>. Ela deve ter um método <code>createElement(tag: string, text: string)</code> que cria um elemento (simulado por um objeto <code>{tag, text}</code>) e o armazena em um array <code>private elements</code>. Crie um método <code>render(containerId: string)</code> que deveria (em um cenário real) adicionar os elementos a um contêiner do DOM. O método <code>render</code> deve ser chamado por um objeto externo, simulando um event listener, então você precisa garantir que o <code>this</code> dentro de <code>render</code> ainda se refira à instância de <code>DOMManager</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface Element {
@@ -766,6 +782,8 @@ Crie uma função <code>logString(value: unknown)</code> que verifica se o valor
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">function logString(value: unknown): void {
   if (typeof value === 'string') {
@@ -788,6 +806,8 @@ Crie uma função <code>getDouble(value: unknown): number | null</code> que veri
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">function getDouble(value: unknown): number | null {
   if (typeof value === 'number') {
@@ -808,6 +828,8 @@ console.log(getDouble(null)); // null
 Crie uma função <code>safeJsonParse(json: string): unknown | Error</code>. Esta função deve receber uma string JSON, tentar fazer o parse com <code>JSON.parse</code>. Se for bem-sucedido, deve retornar o objeto parseado (como <code>unknown</code>). Se ocorrer um erro no parse, ela deve capturar a exceção e retornar um objeto <code>Error</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">function safeJsonParse(json: string): unknown | Error {
@@ -911,6 +933,8 @@ Crie uma função <code>formatInput(input: string | string[])</code>. Se o <code
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">function formatInput(input: string | string[]): string {
   if (Array.isArray(input)) {
@@ -932,6 +956,8 @@ console.log(formatInput([&quot;hello&quot;, &quot;world&quot;])); // &quot;hello
 Defina duas interfaces: <code>Fish</code> com um método <code>swim()</code> e <code>Bird</code> com um método <code>fly()</code>. Crie uma função <code>makePetMove(pet: Fish | Bird)</code>. Dentro dela, use um <strong>custom type guard</strong> <code>isFish(pet): pet is Fish</code> para verificar o tipo do animal e chamar o método correto (<code>swim</code> ou <code>fly</code>).</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface Fish {
@@ -974,6 +1000,8 @@ makePetMove(zazu);
 Implemente o padrão <em>Discriminated Union</em>. Crie duas interfaces, <code>SuccessResponse</code> e <code>ErrorResponse</code>. Ambas devem ter uma propriedade <code>status</code>, mas com valores literais diferentes (<code>'success'</code> e <code>'error'</code>). Crie uma função <code>handleApiResponse(response: ApiResponse)</code> que usa a propriedade <code>status</code> para identificar o tipo da resposta e logar os dados ou a mensagem de erro apropriada.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface SuccessResponse {
@@ -1069,6 +1097,8 @@ Dada a interface <code>Book { id: number; title: string; author: string; pages: 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">interface Book {
   id: number;
@@ -1092,6 +1122,8 @@ const preview: BookPreview = {
 Crie uma interface <code>AppSettings</code> com todas as propriedades opcionais: <code>theme: string</code>, <code>fontSize: number</code>, <code>language: string</code>. Em seguida, crie um tipo <code>RequiredAppSettings</code> que tenha todas essas mesmas propriedades, mas como obrigatórias. Por fim, crie uma função <code>applySettings(settings: RequiredAppSettings)</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface AppSettings {
@@ -1124,6 +1156,8 @@ applySettings(mySettings);
 Crie um <code>enum</code> chamado <code>UserRole</code> com os valores <code>ADMIN</code>, <code>EDITOR</code>, e <code>VIEWER</code>. Crie um tipo <code>Permissions</code> que define o que cada papel pode fazer (ex: <code>{ canWrite: boolean; canRead: boolean; }</code>). Use o Utility Type <code>Record</code> para criar um objeto <code>rolePermissions</code> que mapeia cada <code>UserRole</code> para seu respectivo objeto <code>Permissions</code> de forma type-safe.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">enum UserRole {
@@ -1205,6 +1239,8 @@ Crie um tipo <code>Size</code> (<code>'small' | 'medium' | 'large'</code>) e um 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">type Size = 'small' | 'medium' | 'large';
 type Color = 'red' | 'blue' | 'green';
@@ -1223,6 +1259,8 @@ const anotherShirt: TShirtSKU = &quot;large-red&quot;;
 Crie um tipo <code>IconName</code> que represente nomes de ícones no formato <code>icon-[nome]</code>, onde <code>[nome]</code> pode ser <code>user</code>, <code>home</code>, ou <code>settings</code>. Em seguida, crie um tipo <code>IconSize</code> que pode ser <code>16</code>, <code>24</code>, ou <code>32</code>. Finalmente, crie um tipo <code>IconId</code> que combine os dois, no formato <code>icon-[nome]-[tamanho]px</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">type IconName = `icon-${'user' | 'home' | 'settings'}`;
@@ -1245,6 +1283,8 @@ Crie um tipo <code>ApiRoute</code> que valide os seguintes formatos de rota para
 Onde <code>[recurso]</code> pode ser <code>users</code>, <code>posts</code>, ou <code>products</code>, e <code>[id]</code> pode ser <code>string</code> ou <code>number</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">type Resource = 'users' | 'posts' | 'products';
@@ -1288,6 +1328,8 @@ Crie uma classe <code>StringStore</code> <strong>não genérica</strong>. Ela de
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">class StringStore {
   private data: string[] = [];
@@ -1314,6 +1356,8 @@ console.log(store.getAll()); // [&quot;maçã&quot;, &quot;banana&quot;]
 Crie uma classe <code>KeyValueStore&lt;V&gt;</code> que seja genérica para o <strong>valor</strong> (<code>V</code>), mas a chave seja sempre <code>string</code>. Use um <code>Record&lt;string, V&gt;</code> para o armazenamento privado. Implemente os métodos <code>set(key: string, value: V)</code> e <code>get(key: string): V | undefined</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class KeyValueStore&lt;V&gt; {
@@ -1351,6 +1395,8 @@ Implemente a classe <code>BaseRepository&lt;T&gt;</code>. Esta classe deve ser g
 3.  Implemente os métodos: <code>create(item: T)</code>, <code>findById(id: T['id'])</code>, <code>update(id: T['id'], payload: Partial&lt;Omit&lt;T, 'id'&gt;&gt;)</code>, e <code>delete(id: T['id'])</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// A constraint que todas as entidades devem seguir

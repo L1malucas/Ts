@@ -368,6 +368,8 @@ Crie uma classe base <code>Vehicle</code> com uma propriedade <code>brand</code>
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">class Vehicle {
   constructor(public brand: string) {}
@@ -399,6 +401,8 @@ myCar.startEngine(); // &quot;Motor ligado.&quot;
 Crie uma classe abstrata <code>LoggerBase</code> com um método abstrato <code>log(message: string)</code>. Crie duas classes concretas que herdam de <code>LoggerBase</code>: <code>ConsoleLogger</code> (que imprime a mensagem no console) e <code>FileLogger</code> (que simula a escrita da mensagem em um arquivo, imprimindo "Escrevendo no arquivo: [mensagem]").</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">abstract class LoggerBase {
@@ -441,6 +445,8 @@ fileLogger.logWithTimestamp(&quot;Erro crítico no sistema.&quot;);
 Recrie a estrutura do seu <code>GetTableDataService</code> usando uma classe abstrata. Crie uma classe <code>BaseService&lt;TResponse, TParams&gt;</code> com um método abstrato <code>handle(params: TParams): Promise&lt;TResponse&gt;</code>. Crie uma classe concreta <code>FetchUsersService</code> que herda de <code>BaseService</code> e implementa o método <code>handle</code> para "buscar" uma lista de usuários.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Definição dos tipos para o serviço concreto
@@ -562,6 +568,8 @@ Crie uma classe genérica <code>DataStore&lt;T&gt;</code> que armazena um array 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">class DataStore&lt;T&gt; {
   private data: T[] = [];
@@ -594,6 +602,8 @@ console.log(numberStore.getAll()); // [10, 20]
 Crie uma classe genérica <code>Cache&lt;T&gt;</code> que armazena um valor do tipo <code>T</code> e uma data de expiração. Implemente os métodos <code>set(value: T, ttl: number)</code> (ttl em segundos) e <code>get(): T | null</code>. O método <code>get</code> deve retornar <code>null</code> se o cache tiver expirado.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class Cache&lt;T&gt; {
@@ -640,6 +650,8 @@ testCache();
 Crie uma classe <code>DataService&lt;T extends { id: K }, K extends string | number&gt;</code>. Esta classe deve gerenciar uma coleção de entidades <code>T</code>. Implemente os métodos <code>add(item: T)</code> e <code>findById(id: K): T | undefined</code>. O uso de múltiplos generics (<code>T</code> e <code>K</code>) garante que o tipo do <code>id</code> seja consistente.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// A constraint genérica
@@ -749,6 +761,8 @@ Crie uma interface <code>User</code> com <code>name: string</code>. Crie uma fun
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">interface User {
   name: string;
@@ -775,6 +789,8 @@ printUserName.apply(user2); // &quot;User name: Bob&quot;
 Crie uma classe <code>Configuration&lt;T&gt;</code> que armazena um objeto de configuração. Crie um método <code>update(updater: (this: T, currentConfig: T) =&gt; T)</code>. A função <code>updater</code> deve receber a configuração atual, mas seu <code>this</code> deve ser tipado como a própria configuração <code>T</code>, permitindo acesso direto às propriedades.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class Configuration&lt;T&gt; {
@@ -818,6 +834,8 @@ console.log(myConfig.getConfig()); // { apiUrl: '/api/v1', timeout: 6000 }
 Implemente a classe <code>FormBuilder&lt;T&gt;</code> do plano de estudos. Ela deve ter um método <code>field&lt;K extends keyof T&gt;(name: K, value: T[K]): this</code> que adiciona um campo ao formulário. O método <code>field</code> deve retornar <code>this</code> para encadeamento. Crie um método <code>build(): T</code> que retorna o objeto de formulário completo.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">class FormBuilder&lt;T extends object&gt; {
@@ -937,6 +955,8 @@ Crie um decorator de método chamado <code>@deprecated</code>. Quando um método
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">function deprecated(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
@@ -965,6 +985,8 @@ new OldApiService().findUsers();
 Crie um decorator de propriedade <code>@min(minValue: number)</code>. Este decorator deve garantir que, sempre que a propriedade for alterada, seu novo valor não seja menor que <code>minValue</code>. Se for, um erro deve ser lançado.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">function min(minValue: number) {
@@ -1020,6 +1042,8 @@ try {
 Crie um decorator de método <code>@cache</code>. Ele deve armazenar o resultado da primeira chamada do método. Nas chamadas subsequentes com os mesmos argumentos, ele deve retornar o resultado do cache em vez de executar o método novamente. Use <code>JSON.stringify</code> para criar uma chave de cache a partir dos argumentos.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">function cache(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
@@ -1125,6 +1149,8 @@ Crie uma função <code>fail(message: string): never</code> que sempre lança um
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">function fail(message: string): never {
   throw new Error(message);
@@ -1152,6 +1178,8 @@ processValue(123);
 Crie um branded type <code>Email</code> a partir de <code>string</code>. Crie uma função <code>sendEmail(to: Email, subject: string)</code> que só aceita o tipo <code>Email</code>. Crie uma função <code>createEmail(address: string): Email | null</code> que valida se a string contém um <code>@</code> antes de fazer a asserção de tipo para <code>Email</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">type Brand&lt;K, T&gt; = K &amp; { __brand: T };
@@ -1190,6 +1218,8 @@ if (invalidEmail === null) {
 Crie um wrapper type-safe para uma biblioteca externa falsa. A biblioteca tem um objeto <code>untypedLibrary</code> que é <code>any</code>. Crie funções <code>safeGetNumber(key: string)</code> e <code>safeGetString(key: string)</code> que usam o <code>untypedLibrary</code>, verificam o tipo do valor retornado, e o retornam com o tipo correto ou <code>undefined</code> se o tipo não corresponder.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// A biblioteca externa perigosa
@@ -1289,6 +1319,8 @@ Crie um tipo utilitário <code>ElementTypeOf&lt;T&gt;</code> que obtém o tipo d
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">type ElementTypeOf&lt;T&gt; = T extends (infer E)[] ? E : never;
 
@@ -1306,6 +1338,8 @@ Implemente seu próprio <code>NonNullable&lt;T&gt;</code>. Este tipo utilitário
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">type MyNonNullable&lt;T&gt; = T extends null | undefined ? never : T;
 
@@ -1321,6 +1355,8 @@ type C = MyNonNullable&lt;null | undefined&gt;; // never
 Implemente o tipo <code>DeepPartial&lt;T&gt;</code> do plano de estudos. Ele deve tornar todas as propriedades de um objeto e de seus sub-objetos aninhados opcionais. Dica: você precisará de recursão e mapped types.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">type DeepPartial&lt;T&gt; = T extends object ? {
@@ -1378,6 +1414,8 @@ Crie uma classe abstrata <code>AuthProvider</code> com um método abstrato <code
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">abstract class AuthProvider {
   abstract authenticate(credentials: any): Promise&lt;boolean&gt;;
@@ -1411,6 +1449,8 @@ googleAuth.authenticate({ token: &quot;abc123xyz&quot; });
 Melhore o sistema do Nível 1. Torne a classe <code>AuthProvider</code> genérica: <code>AuthProvider&lt;TUser, TCreds&gt;</code>. O método <code>authenticate</code> deve agora retornar <code>Promise&lt;TUser | null&gt;</code>. Adapte as classes <code>EmailProvider</code> e <code>GoogleProvider</code> para usar tipos específicos de usuário e credenciais.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface BaseUser { id: number; name: string; }
@@ -1464,6 +1504,8 @@ testAuth();
 Crie um decorator de método <code>@permission(requiredRole: Role)</code>. Crie um <code>enum Role { USER, ADMIN }</code>. Crie uma classe <code>ProtectedService</code> com um usuário logado (que tem uma propriedade <code>role</code>). Adicione um método <code>sensitiveData()</code> decorado com <code>@permission('ADMIN')</code>. O decorator deve verificar se o <code>role</code> do usuário na instância do serviço corresponde ao <code>requiredRole</code> antes de executar o método. Se não, deve lançar um erro.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">enum Role { USER, ADMIN }

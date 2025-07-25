@@ -347,6 +347,8 @@ Crie uma função <code>doubleMe</code> que tem duas sobrecargas: se receber um 
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">function doubleMe(x: number): number;
 function doubleMe(x: string): string;
@@ -373,6 +375,8 @@ console.log(typeof strResult, strResult);
 Crie uma função <code>createElement</code>. Se ela receber um único argumento (<code>'div'</code>), ela deve retornar um <code>HTMLDivElement</code>. Se receber <code>'input'</code>, deve retornar um <code>HTMLInputElement</code>. Use sobrecargas para tipar o retorno corretamente.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Tipos de retorno simulados, já que não estamos no DOM
@@ -408,6 +412,8 @@ Implemente a função <code>getData</code> do plano de estudos. Ela deve ter dua
 Simule a lógica de busca e os tipos <code>User</code> e <code>Filter</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface User { id: string; name: string; }
@@ -513,6 +519,8 @@ Crie um Mapped Type <code>ObjectWithSetters&lt;T&gt;</code> que pega um objeto <
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">type ObjectWithSetters&lt;T&gt; = {
   [P in keyof T as `set${Capitalize&lt;string &amp; P&gt;}`]: (value: T[P]) =&gt; void;
@@ -540,6 +548,8 @@ Crie um Mapped Type <code>FilterByType&lt;T, U&gt;</code> que pega um tipo <code
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">type FilterByType&lt;T, U&gt; = {
   [P in keyof T as T[P] extends U ? P : never]: T[P];
@@ -565,6 +575,8 @@ const numbers: NumberOnlyBag = { count: 5, value: 10 };
 Implemente o <code>FormConfig&lt;T&gt;</code> do plano de estudos. Ele deve pegar um tipo <code>T</code> e gerar um novo tipo onde cada chave <code>K</code> é transformada em <code>${string &amp; K}Config</code> e o valor é um objeto de configuração <code>FieldConfig&lt;T[K]&gt;</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Tipo auxiliar para a configuração do campo
@@ -673,6 +685,8 @@ Defina uma interface <code>INotifier</code> com um método <code>notify(message:
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">interface INotifier {
   notify(message: string): void;
@@ -707,6 +721,8 @@ orderService.placeOrder();
 Crie uma interface <code>IProductRepository</code> com um método <code>getProductPrice(productId: number): Promise&lt;number&gt;</code>. Crie uma classe <code>PricingService</code> que depende de <code>IProductRepository</code>. O serviço deve ter um método <code>calculateDiscount(productId: number, discountPercentage: number)</code> que busca o preço do produto e retorna o valor do desconto.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">interface IProductRepository {
@@ -753,6 +769,8 @@ testPricing();
 Recrie e melhore seu <code>GetTableDataService</code>. Defina uma classe abstrata <code>GetTableDataService&lt;TResponse, TParams&gt;</code> com um método abstrato <code>handle(params: TParams): Promise&lt;TResponse&gt;</code>. Crie uma implementação concreta <code>UserTableService</code> que depende de um <code>IUserRepository</code> (com um método <code>find(params: TParams)</code>) injetado no construtor.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Contratos e Tipos
@@ -862,6 +880,8 @@ Crie uma função <code>parseNumber(s: string): Result&lt;number, string&gt;</co
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">type Success&lt;T&gt; = { success: true; value: T };
 type Failure&lt;E&gt; = { success: false; error: E };
@@ -889,6 +909,8 @@ if (!res2.success) console.error(res2.error);
 Crie uma classe <code>Result</code> com métodos estáticos <code>ok&lt;T&gt;(value: T)</code> e <code>fail&lt;E&gt;(error: E)</code> para facilitar a criação. Refatore o exercício anterior para usar <code>Result.ok(...)</code> e <code>Result.fail(...)</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Tipos auxiliares
@@ -927,6 +949,8 @@ if (res.success) {
 Crie uma função <code>fetchUserProfile(userId: string): Promise&lt;Result&lt;User, Error&gt;&gt;</code>. Esta função deve simular uma chamada de API. Se o <code>userId</code> for <code>'1'</code>, retorne um <code>Success</code> com um objeto <code>User</code>. Se for qualquer outro valor, retorne um <code>Failure</code> com um <code>new Error("Usuário não encontrado")</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Reutilizando os tipos do Nível 1
@@ -1019,6 +1043,8 @@ Crie um objeto <code>HttpStatusCodes</code> que mapeia nomes de status (<code>OK
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">const HttpStatusCodes = {
   OK: 200,
@@ -1040,6 +1066,8 @@ type OkStatus = typeof HttpStatusCodes.OK; // 200
 Crie um tipo <code>UserAction</code> (<code>'create'</code> | <code>'edit'</code> | <code>'delete'</code>). Crie um objeto <code>actionPermissions</code> que mapeia cada <code>UserAction</code> para um nível de permissão (<code>'admin'</code> | <code>'editor'</code> | <code>'guest'</code>). Use <code>Record</code> para garantir que todas as ações sejam mapeadas.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">type UserAction = 'create' | 'edit' | 'delete';
@@ -1066,6 +1094,8 @@ checkPermission('edit');
 Implemente o <code>tooltipContent</code> do plano de estudos. Crie um <code>enum ColumnType</code>. Crie um tipo <code>DictionaryPath</code> usando template literals. Crie o objeto <code>tooltipContent</code> usando <code>Record</code> para o mapeamento e <code>as const</code> para imutabilidade total.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">enum ColumnType {
@@ -1141,6 +1171,8 @@ Crie uma função <code>log(message: string, level: 'info' | 'warn' | 'error')</
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">function log(message: string, level: 'info' | 'warn' | 'error'): void {
   console.log(`[${level.toUpperCase()}] ${message}`);
@@ -1159,6 +1191,8 @@ log(...params);
 Crie uma função <code>fetchData(): Promise&lt;{ data: string[] }&gt;</code> que simula uma chamada de API. Use <code>ReturnType&lt;T&gt;</code> para extrair o tipo de retorno. Em seguida, use <code>Awaited&lt;T&gt;</code> (um tipo nativo) para extrair o tipo resolvido da Promise.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">async function fetchData(): Promise&lt;{ data: string[] }&gt; {
@@ -1186,6 +1220,8 @@ processData();
 Implemente o <code>ServiceFactory&lt;T&gt;</code> do plano de estudos. Deve ser um tipo que representa um objeto com um método <code>create</code>. Este método <code>create</code> deve aceitar os mesmos parâmetros que o construtor da classe <code>T</code> e retornar uma instância de <code>T</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// O tipo genérico da fábrica
@@ -1240,6 +1276,8 @@ Crie uma classe <code>HttpClient</code> com um único método <code>get&lt;T&gt;
 <details>
 <summary>Ver Solução</summary>
 
+---
+
 
 <pre><code class="language-typescript">class HttpClient {
   async get&lt;T&gt;(url: string): Promise&lt;T&gt; {
@@ -1268,6 +1306,8 @@ testClient();
 Melhore o <code>HttpClient</code> do Nível 1 para usar o <code>Result</code> pattern. O método <code>get&lt;T&gt;(url: string)</code> deve agora retornar <code>Promise&lt;Result&lt;T, Error&gt;&gt;</code>. Se a URL contiver a palavra <code>'fail'</code>, simule um erro e retorne um <code>Failure</code>. Caso contrário, retorne um <code>Success</code>.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Reutilizando o tipo Result
@@ -1319,6 +1359,8 @@ Adicione sobrecarga de função ao <code>HttpClient</code>. Crie um método <cod
 Implemente a lógica na assinatura de implementação para lidar com ambos os casos.</p>
 <details>
 <summary>Ver Solução</summary>
+
+---
 
 
 <pre><code class="language-typescript">// Reutilizando o tipo Result
